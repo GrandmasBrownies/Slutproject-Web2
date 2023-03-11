@@ -5,12 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/assets/style.css">
+    <script src="https://kit.fontawesome.com/4f32920e14.js" crossorigin="anonymous"></script>
 
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="navbar">
+        <li><a class="active" href="index.ejs">Home</a></li>
+        <li><a class="share" href="">Share your recepies</a></li>
+        <li><a class="favourite" href="">Favourite recepies *</a></li>
+        <li><a class="grocery" href="">Grocery list</a></li>
 
+    </div>
+    <div>
+        <i class="fa-sharp fa-regular fa-basket-shopping-simple"></i>
+        <i class="fa-solid fa-cart-shopping-fast"></i>
+    </div>
 
     <% data.forEach(function (post) { %>
         <% if(post.z != ''){ %>
