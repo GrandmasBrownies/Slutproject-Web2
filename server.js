@@ -17,6 +17,7 @@ app.set('view engine', 'ejs');
 
 
 app.get('/', function(req,res){
+    res.render('grocery', { items: items });
     let sql = 'SELECT * FROM tabellnamn ORDER BY date DESC';
     db.query(sql, function(err, results){
         if(err) {
@@ -24,15 +25,50 @@ app.get('/', function(req,res){
         } else {
             obj = {data: results};
             console.log(obj)
-            res.render('index', obj)
+            res.render('home', obj)
         }
     });
 });
 
+let items = [];
+
+app.post('/add', (req, res) => {
+    const newItem = req.body.item;
+    items.push(newItem);
+    res.redirect('/');
+  });
+  
+app.post('/remove', (req, res) => {
+    const removeItem = req.body.item;
+    items = items.filter(item => item !== removeItem);
+    res.redirect('/');
+  });
 
 
-app.get('/post', function(req,res){
-    res.render('post')
+
+
+app.get('/home', function(req,res){
+    res.render('home')
+ });
+
+app.get('/share', function(req,res){
+    res.render('share')
+ });
+
+ app.get('/favourite', function(req,res){
+    res.render('favourite')
+ });
+
+ app.get('/grocery', function(req,res){
+    res.render('grocery', { items: items });
+ });
+
+ app.get('/signin', function(req,res){
+    res.render('signin')
+ });
+
+ app.get('/signup', function(req,res){
+    res.render('signup')
  });
 
  app.post('/post', upload.single('img'), function(req,res){
@@ -44,7 +80,7 @@ app.get('/post', function(req,res){
         if(err) {
             throw err;
         } else {
-            res.render ('index');
+            res.render ('home');
         }
     });
  });
