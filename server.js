@@ -61,9 +61,16 @@ var obj = {};
    });
  });
 
- app.get('/postLayouts/default:id', function(req,res) {
-    const id = req.params.id;
-    res.render('default')
+ app.get('/recipe/:id', function(req,res) {
+    const recipeId = req.params.id;
+    db.query('SELECT * FROM tabellnamn WHERE id = ?', [recipeId], function(error, results) {
+        if (error) {
+            console.error(error);
+            return;
+        }
+        const recipe = results[0];
+        res.render('recipe', { recipe: recipe });
+    });
  });
 
 
