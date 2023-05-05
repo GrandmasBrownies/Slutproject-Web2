@@ -15,9 +15,18 @@
             <li><a class="share" href="/share">Share your recepies</a></li>
             <li><a class="favourite" href="/favourite">Favourite recepies *</a></li>
             <li><a class="grocery" href="/grocery">Grocery list</a></li>
-            <li><a class="signin" href="/signin">Sign in</a></li>
-            <li><a class="active" href="/signup">Sign up</a></li>
+            <li><a class="active" href="/login">Login</a></li>
         </ul>
     </div>
+
+    <form action="/login" method="POST">
+        <label for="usernameOrEmail">Username/Email:</label>
+        <input type="text" name="usernameOrEmail" id="usernameOrEmail" required/><br/><br/>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password"/><br/><br/>
+        <button type="submit">Login</button><br/>
+
+        <p>Don't have an account? <a href="/register"><strong>Register</strong></a></p>
+    </form>
 </body>
 </html>

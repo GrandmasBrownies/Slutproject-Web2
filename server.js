@@ -1,16 +1,25 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const db = require('./connection');
 
 const path = require('path');
 const upload = require('./upload');
 app.use(express.static(path.resolve('./public')));
+app.use(session({
+    secret: 'banana69',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
 
 
 const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs');
+
+
 
 
 var groclist = {};
@@ -74,12 +83,16 @@ var obj = {};
  });
 
 
- app.get('/share', function(req,res){
+ app.get('/share', function(req,res,){
     res.render('share')
  });
 
  app.get('/post', function(req,res){
-    res.render('post')
+    if (req.session.loggedIn) {
+        res.render('post')
+    } else {
+        res.redirect('/share + say that the user must be logged in');
+    }
  });
 
  app.get('/favourite', function(req,res){
@@ -90,24 +103,56 @@ var obj = {};
     res.render('grocery', { items: items });
  });
 
- app.get('/signin', function(req,res){
-    res.render('signin')
+ app.get('/register', function(req,res){
+    res.render('register')
  });
 
- app.get('/signup', function(req,res){
-    res.render('signup')
+ app.get('/login', function(req,res){
+    res.render('login')
  });
+
 
  app.post('/post', upload.single('img'), function(req,res){
     const title = req.body.title;
-    const text = req.body.text;
+    const ingredients = req.body.ingredients;
+    const instructions = req.body.instructions;
     const img = "/uploads/" + req.file.img;
-    const sqlInstert = "INSERT INTO tabellnamn (text1, text2, text3) VALUES (?, ?, ?);"
-    db.query(sqlInstert, [title, text, img], (err, result)=> {
+    const sqlInstert = "INSERT INTO tabellnamn (text1, ingredients, instructions, text3 ) VALUES (?, ?, ?, ?);"
+    db.query(sqlInstert, [title, ingredients, instructions, img], (err, result)=> {
         if(err) {
             throw err;
         } else {
             res.redirect('home')
+        }
+    });
+ });
+
+ app.post('/register', function(req,res) {
+    const username = req.body.username;
+    const email = req.body.email;
+    const password = req.body.password;
+    const sqlInstert = "INSERT INTO login (username, email, password ) VALUES (?, ?, ?)";
+    db.query(sqlInstert, [username, email, password], (err, result)=> {
+        if(err) {
+            throw err;
+        } else {
+            res.redirect('home')
+        }
+    });
+ });
+
+ app.post('/login', function(req,res) {
+    const usernameOrEmail = req.body.usernameOrEmail;
+    const password = req.body.password;
+    db.query('SELECT * FROM login WHERE (username = ? OR email = ?) AND password = ?', [usernameOrEmail, usernameOrEmail, password], (err, results) => {
+        if (err) {
+            throw (err);
+        }
+        if (results.length > 0) {
+            req.session.loggedIn = true;
+            res.redirect('some type of welcome');
+        } else {
+            res.redirect('some type of did not find user');
         }
     });
  });
