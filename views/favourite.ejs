@@ -20,32 +20,20 @@
     </div>
 
     <div class="favmain">
-        <h3>You don't have any favourite recepies yet. <a href="/home">Go find some</a></h3>
-
-        <div class="favrecp">
-            <div>
-                <a href="/home"><img src="/img/cat.jpg"></a>
-                <button class="addgroc">icon sc</button>
-                <button class="removefav">icon star</button>
-            </div>
-            <div>
-                <a href="/home"><img src="/img/cat.jpg"></a>
-                <button class="addgroc">icon sc</button>
-                <button class="removefav">icon star</button>
-            </div>
-            <div>
-                <a href="/home"><img src="/img/cat.jpg"></a>
-                <button class="addgroc">icon sc</button>
-                <button class="removefav">icon star</button>
-            </div>
-
-        </div>
-
-        <div class="filter">
-            <button class="allfav">all</button>
-            <button class="createNew">Create New</button>
-        </div>
-
+        <li class="eachpost">
+            <% if (favpost && favpost.length > 0) { %>
+                <% favpost.forEach(favpost => { %>
+                    <a href="/recipe/<%= favpost.id %>">
+                        <%= favpost.text1 %>
+                        <% if(favpost.text3 != ''){ %>
+                            <img src="<%= favpost.text3 %>">
+                        <% } %>
+                    </a>
+                <% }); %>
+            <% } else { %>
+                <p>You don't have any favourite recepies! <a href="/home">Go find some</a></p>
+            <% } %>
+        </li>
     </div>
 </body>
 </html>

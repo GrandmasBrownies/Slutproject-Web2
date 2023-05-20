@@ -23,8 +23,14 @@
         <h1>Would you like to share your own recepies?</h1>
         <div class="container">
             <h5>Of course you do, upload them here:</h5>    
-            <button>Share Your Recepies</button>
-            <li><a href="/post">test</a></li>
+            <a href="/post">                
+                <button>Share Your Recepies</button>
+            </a>
+        </div>
+        <div>
+            <% if (notLoggedInMsg) { %>
+                <div><%= notLoggedInMsg %></div>
+            <% } %>
         </div>
     </div>
 

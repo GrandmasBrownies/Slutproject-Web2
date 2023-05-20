@@ -30,14 +30,24 @@
         <h3>Top recepies:</h3>
 
         <div class="post">
-            <% data.forEach(function (post) { %>
-                <% if(post.text3 != ''){ %>
-                <div class="eachpost">
-                    <img src="<%= post.text3 %>">
-                    <% } %>
-                    <a href="/recipe/<%= post.id %>"><%= post.text1 %></a>
-                </div>
-            <% }) %>
+            <li class="eachpost">
+                <% data.forEach(function (post) { %>
+                    <a href="/recipe/<%= post.id %>">
+                        <%= post.text1 %>
+                        <% if(post.text3 != ''){ %>
+                            <img src="<%= post.text3 %>">
+                        <% } %>
+                    </a>
+                <form action="/addcart" method="POST">
+                    <input type="hidden" name="ingredients" value="<%= post.ingredients %>">
+                    <button type="submit">Add to cart</button>
+                </form>
+                <form action="addfav" method="POST">
+                    <input type="hidden" name="favId" value="<%= post.id %>">
+                    <button type="submit">Add to favourites</button>
+                </form>
+                <% }) %>
+            </li>
         </div>
     </div>
 

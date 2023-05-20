@@ -28,5 +28,11 @@
 
         <p>Don't have an account? <a href="/register"><strong>Register</strong></a></p>
     </form>
+
+    <div>
+        <% if (loginMsg) { %>
+            <div><%= loginMsg %></div>
+        <% } %>
+    </div>
 </body>
 </html>
