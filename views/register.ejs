@@ -5,47 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/assets/style.css">
+    <script src="https://kit.fontawesome.com/4f32920e14.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
-<body>
+<body class="body-reg">
     <div class="navbar">
         <ul>
-            <li><a class="home" href="/home">Home</a></li>
-            <li><a class="share" href="/share">Share your recepies</a></li>
-            <li><a class="favourite" href="/favourite">Favourite recepies *</a></li>
-            <li><a class="grocery" href="/grocery">Grocery list</a></li>
-            <li><a class="active" href="/login">Login</a></li>
+            <li class="home"><a href="/home">Home</a></li>
+            <li class="share"><a href="/share">Share your recepies</a></li>
+            <li class="favourite"><a href="/favourite">Favourite recepies <i class="fa-solid fa-star"></i></a></li>
+            <li class="grocery"><a href="/grocery">Grocery list</a></li>
+            <li class="login"><a href="/login">Login</a></li>
         </ul>
     </div>
 
-    <form action="/register" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required/><br/><br/>
-        <label for="email">Email:</label>
-        <input type="text" name="email" id="email" required/><br/><br/>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password"/><br/><br/>
-        <button type="submit">Register</button><br/>
+    <div class="reg-main">
+        <form action="/register" method="POST">
+            <h2>Register</h2>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="NoobMaster69" required/><br/><br/>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" placeholder="name.lastname@gmail.com" required/><br/><br/>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="IronmanSucks123" required/><br/><br/>
+            <button type="submit">Register</button><br/>
 
-        <p>Already have an account? <a href="/login"><strong>Login</strong></a></p>
-    </form>
-
-    <div>
-        <% if (errors) { %>
-            <% errors.forEach(function(error) { %>
-                <div class="alert alert-danger"><%= error.msg %></div>
-            <% }); %>
-        <% } %>
-
-        <% if (errorMessage) { %>
-            <div><%= errorMessage %></div>
-        <% } %>
-    </div>
-
-    <div>
-        <br>
-        <h3>Why become a member?</h3>
-        <p>Because you can share your own recepies</p>
+            <% if (errors) { %>
+                <% errors.forEach(function(error) { %>
+                    <div class="errorMsg"><%= error.msg %></div>
+                <% }); %>
+            <% } %>
+    
+            <% if (errorMessage) { %>
+                <div class="errorMsg"><%= errorMessage %></div>
+            <% } %>
+    
+            <p>Already have an account? <a href="/login"><strong>Login</strong></a></p>
+        </form>
     </div>
 </body>
 </html>

@@ -8,26 +8,24 @@
     <script src="https://kit.fontawesome.com/4f32920e14.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
-<body>
+<body class="body-share">
     <div class="navbar">
         <ul>
-            <li><a class="home" href="/home">Home</a></li>
-            <li><a class="active" href="/share">Share your recepies</a></li>
-            <li><a class="favourite" href="/favourite">Favourite recepies *</a></li>
-            <li><a class="grocery" href="/grocery">Grocery list</a></li>
-            <li><a class="login" href="/login">Login</a></li>
+            <li class="home"><a href="/home">Home</a></li>
+            <li class="active"><a href="/share">Share your recipes</a></li>
+            <li class="favourite"><a href="/favourite">Favourite recipes <i class="fa-solid fa-star"></i></a></li>
+            <li class="grocery"><a href="/grocery">Grocery list</a></li>
+            <li class="login"><a href="/login">Login</a></li>
         </ul>
     </div>
 
     <div class="share_main">
-        <h1>Would you like to share your own recepies?</h1>
+        <h1>Would you like to share your own recipes?</h1>
         <div class="container">
             <h5>Of course you do, upload them here:</h5>    
             <a href="/post">                
-                <button>Share Your Recepies</button>
+                <button><i class="fa-solid fa-download"></i></button>
             </a>
-        </div>
-        <div>
             <% if (notLoggedInMsg) { %>
                 <div><%= notLoggedInMsg %></div>
             <% } %>

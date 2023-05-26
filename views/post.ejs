@@ -4,24 +4,28 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="/assets/style.css">
+   <script src="https://kit.fontawesome.com/4f32920e14.js" crossorigin="anonymous"></script>
    <title>Document</title>
 </head>
-<body>
-   <h2>
-       Skriva till databas
-   </h2>
-   <a href="/share">Go back</a>
-   <br/><br/>
-   <form action="/post" method="POST" enctype="multipart/form-data">
-       <label for="title">Title:</label>
-       <input type="text" name="title" id="title"/><br/><br/>
-       <label for="ingredients">ingredients:</label>
-       <input type="text" name="ingredients" id="ingredients"/><br/><br/>
-       <label for="instructions">instructions:</label>
-       <input type="text" name="instructions" id="instructions"/><br/><br/>
-       <label for="img">Image:</label>
-       <input type="file" accept="image/*" name="img" id="img"/><br/>
-       <button type="submit">Ok</button>
-   </form>
+<body class="body-post">
+    <div class="post-main">
+        <h2>
+            Share your own recipe with the world!
+        </h2>
+        <a href="/share">Go back</a>
+        <br/><br/>
+        <form action="/post" method="POST" enctype="multipart/form-data">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title"/><br/><br/>
+            <label for="ingredients">ingredients:</label>
+            <input type="text" name="ingredients" id="ingredients"/><br/><br/>
+            <label for="instructions">instructions:</label>
+            <input type="text" name="instructions" id="instructions"/><br/><br/>
+            <label for="img">Image:</label>
+            <input class="image" type="file" accept="image/*" name="img" id="img"/><br/>
+            <button type="submit">Ok</button>
+        </form>
+    </div>
 </body>
 </html>

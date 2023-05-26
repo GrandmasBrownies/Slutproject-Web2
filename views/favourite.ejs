@@ -8,32 +8,41 @@
     <script src="https://kit.fontawesome.com/4f32920e14.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
-<body>
+<body class="fav-body">
     <div class="navbar">
         <ul>
-            <li><a class="home" href="/home">Home</a></li>
-            <li><a class="share" href="/share">Share your recepies</a></li>
-            <li><a class="active" href="/favourite">Favourite recepies *</a></li>
-            <li><a class="grocery" href="/grocery">Grocery list</a></li>
-            <li><a class="login" href="/login">Login</a></li>
+            <li class="home"><a href="/home">Home</a></li>
+            <li class="share"><a href="/share">Share your recipes</a></li>
+            <li class="active"><a href="/favourite">Favourite recipes <i class="fa-solid fa-star"></i></a></li>
+            <li class="grocery"><a href="/grocery">Grocery list</a></li>
+            <li class="login"><a href="/login">Login</a></li>
         </ul>
     </div>
 
     <div class="favmain">
-        <li class="eachpost">
-            <% if (favpost && favpost.length > 0) { %>
-                <% favpost.forEach(favpost => { %>
+        <% if (favpost && favpost.length > 0) { %>
+            <% favpost.forEach(favpost => { %>
+                <li class="eachpost">
                     <a href="/recipe/<%= favpost.id %>">
-                        <%= favpost.text1 %>
+                        <h2><%= favpost.text1 %></h2>
                         <% if(favpost.text3 != ''){ %>
                             <img src="<%= favpost.text3 %>">
                         <% } %>
                     </a>
-                <% }); %>
-            <% } else { %>
-                <p>You don't have any favourite recepies! <a href="/home">Go find some</a></p>
-            <% } %>
-        </li>
+                    <form action="/addcart" method="POST">
+                        <input type="hidden" name="title" value="<%= favpost.text1 %>">
+                        <input type="hidden" name="ingredients" value="<%= favpost.ingredients %>">
+                        <button type="submit" title="Add to cart" class="btncart"><i class="fa-solid fa-basket-shopping"></i></button>
+                    </form>
+                    <form action="removefav" method="POST">
+                        <input type="hidden" name="favId" value="<%= favpost.id %>">
+                        <button type="submit" title="remove from favourites"><i class="fa-regular fa-star"></i></button>
+                    </form>
+                </li>
+            <% }); %>
+        <% } else { %>
+            <p>You don't have any favourite recepies! <a href="/home">Go find some</a></p>
+        <% } %>
     </div>
 </body>
 </html>

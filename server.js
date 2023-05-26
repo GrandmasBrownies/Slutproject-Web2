@@ -114,8 +114,9 @@ var obj = {};
  });
 
  app.post('/addcart', function(req, res) {
+    var title = req.body.title;
     var ingredients = req.body.ingredients;
-    db.query('SELECT ingredients FROM tabellnamn WHERE ingredients = ?', [ingredients], (err, results) => {
+    db.query('SELECT * FROM tabellnamn WHERE text1 = ? AND ingredients = ?', [title, ingredients], (err, results) => {
         if (err) {
             throw err;
         } else {
@@ -136,6 +137,12 @@ app.post('/addfav', function(req, res) {
         }
     });
 });
+
+app.post('/removefav', function(req, res) {
+    const removefav = req.body.item
+    favpost = favpost.filter(item => item !== removefav);
+    res.render('favourite', { favpost: favpost });
+})
 
 
  app.post('/register',

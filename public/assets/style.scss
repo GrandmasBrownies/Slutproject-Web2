@@ -5,62 +5,121 @@ html,body {
     margin: 0;
 }
 
-.eachpost {
-    list-style-type: none
+.posts {
+    margin-top: 6%;
+    margin-left: 8%;
+    margin-right: 8%;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+}
+.eachpost{
+    border: 3px solid white;
+    background: linear-gradient(35deg, grey, black);
+    padding: 2px;
+    margin: 2px;
+    max-width: 230px;
+    max-height: 290px;
+    h2 {
+        margin-top:  0px;
+    }
+    button {
+        float: left;
+        width: 50px;
+        zoom: 1.5;    
+    }
+    img {
+        max-width: 200px;
+        max-height: 200px;
+    }
 }
 
 .navbar{
-    background-color: green;
     ul {
-        list-style-type: none;
-        overflow: hidden;
-        margin: 0;
+        position: relative;
+        list-style: none;
+        margin: 0px;
+        li {
+            float: left;
+            margin-left: 10px;
+            margin-top: 20px; 
+            a {
+                padding: 20px;
+                color: white;
+                text-decoration: none;
+                font-size: 20px;
+                font-family: Helvetica;
+            }
+        }
+        li:hover {
+            font-weight: bold;
+        }
+        .active {
+            font-weight: bold;
+            text-decoration: 2px white underline;
+        }
+        li.login {
+            float: right;
+            padding: 10px;
+            border: 2px solid white;
+            border-radius: 6px;
+            margin: 10px;
+        }
     }
-    li {
-        float: left;
-    }
-    li a {
-        padding: 15px;
-        text-decoration: none;
-    }
-    .active {
-        background-color: grey;
+
+    .fa-star {
+        zoom: 0.8;
     }
 }
 
 .welcome {
     width: 100%;
     height: 100vh;
-    background-color: blue;
-    overflow: hidden;
-}
-.welcome {
+    background-image: url("/img/welcome.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     h1{
-        margin-top: 100px;
-        margin-left: 200px;
+        padding-top: 100px;
+        padding-left: 200px;
+        margin: 0;
     }
     h4 {
-        margin-top: 150px;
-        margin-left: 800px;
+        padding-top: 150px;
+        padding-left: 800px;
     }
     i {
-        margin: 100px;
+        padding: 100px;
     }
 }
 
 .home_main {
-    height: 100vh;
-}
-.indpost {
-    border: solid 2px black;
+    height: 100;
+    background: url("/img/home_main_bg-transformed.jpeg");
+    background-size: cover;
+    h1 {
+        margin-top: 0;
+        margin-left: 30%;
+        margin-right: 30%;
+        padding-top: 30px;
+        margin-bottom: 0px;
+        color: white;
+        font-size: 70px;
+        font-family: Brush Script MT;
+    }
+    h2 {
+        margin-top: 0;
+    }
 }
 
 .share_main {
-    background-color: pink;
-    height: 100%;
-    overflow: hidden;
+    background-color: rgb(201, 112, 127);
+    width: 100%;
+    height: 100vh;
     h1 {
-        margin: 15px;
+        margin: 0px;
+        padding-top: 80px;
+        padding-left: 25px; 
     }
     .container {
         margin: 0;
@@ -74,6 +133,220 @@ html,body {
         button {
             width: 100%;
             height: 100%;
+            border-radius: 25px;
+            background: linear-gradient(35deg,#179bdd, #45d140);
+            cursor: pointer;
+        }
+        .fa-solid {
+            zoom: 3.5;
+        }
+        button:hover {
+            .fa-solid {
+                zoom: 3.9;
+            }
+        }
+    }
+}
+
+.fav-body {
+    background-color: rgb(29, 126, 126);
+    width: 100vw;
+    height: 100;
+    .favmain {
+        position: fixed;
+        margin-top: 6%;
+        margin-left: 2%;
+        width: 95%;
+        height: 100vh;
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        overflow-x: hidden;
+        list-style: none;
+        border: 2px solid black;
+        p {
+            padding-left: 5px;
+            margin-top: 3px;
+            font-size: 20px;
+        }
+    }
+}
+
+.body-groc {
+    background-color: rgb(82, 23, 179);
+    width: 100%;
+    height: 100%;
+    .groceries {
+        position: absolute;
+        padding-top: 5px;
+        margin-top: 7%;
+        margin-left: 2%;
+        height: 100%;
+        width: 43%;
+        border: 2px solid black;
+        background-color: rgb(169, 83, 83);
+        box-shadow: 10px 10px 10px black;
+        color: white;
+        h2 {
+            float: left;
+            margin-top: 0;
+            margin-left: -30px;
+            margin-right: 15%;  
+        }
+        .groc-item {
+            padding-top: 15px;
+        }
+    }
+    .cartgroc {
+        float: right;
+        border: 2px solid black;
+        width: 45%;
+        height: 100%;
+        margin-top: 47px;
+        margin-right: -80px;
+        background-color: rgb(91, 15, 214);
+        box-shadow: 10px 10px 10px black;
+        color: black;
+        h2 {
+            padding-left: 2%;
+            margin-top: 3px;
+        }
+        li {
+            padding-left: 2%;
+        }
+        p {
+            padding-left: 2%;
+            font-size: 20px;
+        }
+    }
+}
+
+.body-login {
+    background: url('/img/login_bg.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    .login-main {
+        position: absolute;
+        background: linear-gradient(35deg, rgb(232, 232, 31) , lightcoral);
+        margin-top: 12%;
+        margin-left: 32%;
+        width: 30%;
+        height: 58%;
+        font-family: Helvetica;
+        border-radius: 15px;
+        h2 {
+            padding-left: 40%;
+            font-weight: bold;
+        }
+        label{
+            margin-left: 1%;
+            top: 20px;
+        }
+        input {
+            background: none;
+            border: none;
+            border-bottom: 2px solid black;
+            margin-left: 2%;
+            margin-top: 1%;
+            padding: 5px;
+            box-sizing: border-box;
+            width: 95%;
+            color: black;
+        }
+        button {
+            background-color: black;
+            color: white;
+            width: 90%;
+            height: 40px;
+            margin-left: 5%;
+            border-radius: 5px;
+            font-size: 18px;
+
+        }
+        p {
+            margin-top: 30px;
+            margin-left: 18%;
+        }
+        .loginMsg {
+            margin-top: 2%;
+            margin-left: 6%;
+        }
+    }
+}
+
+.body-reg {
+    background: url('/img/login_bg.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    .reg-main {
+        position: absolute;
+        background: linear-gradient(35deg, rgb(232, 232, 31) , lightcoral);
+        margin-top: 10%;
+        margin-left: 32%;
+        width: 30%;
+        height: 77%;
+        font-family: Helvetica;
+        border-radius: 15px;
+        h2 {
+            padding-left: 37%;
+            font-weight: bold;
+        }
+        label{
+            margin-left: 1%;
+            top: 20px;
+        }
+        input {
+            background: none;
+            border: none;
+            border-bottom: 2px solid black;
+            margin-left: 2%;
+            margin-top: 1%;
+            padding: 5px;
+            box-sizing: border-box;
+            width: 95%;
+            color: black;
+        }
+        button {
+            background-color: black;
+            color: white;
+            width: 90%;
+            height: 40px;
+            margin-left: 5%;
+            border-radius: 5px;
+            font-size: 18px;
+
+        }
+        .errorMsg {
+            margin-top: 2%;
+            margin-left: 6%;
+        }
+        p {
+            position: relative;
+            margin-top: 30px;
+            margin-left: 18%;
+        }
+    }
+}
+
+.body-post {
+    background: linear-gradient(190deg, rgb(24, 138, 214), lightcoral);
+    overflow: hidden;
+    .post-main {
+        margin-left: 1%;
+        input:not(.image) {
+            background: none;
+            border: none;
+            border-bottom: 2px solid black;
+            margin-top: 1%;
+            padding: 5px;
+            box-sizing: border-box;
+            width: 15%;
+            color: black;
+        }
+        .image {
+            margin-top: 1%;
         }
     }
 }

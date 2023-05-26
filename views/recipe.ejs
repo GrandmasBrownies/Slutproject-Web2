@@ -7,6 +7,16 @@
     <title><%= recipe.text1 %></title>
 </head>
 <body>
+    <div class="navbar">
+        <ul>
+            <li class="home"><a href="/home">Home</a></li>
+            <li class="share"><a href="/share">Share your recipes</a></li>
+            <li class="favourite"><a href="/favourite">Favourite recipes <i class="fa-solid fa-star"></i></a></li>
+            <li class="grocery"><a href="/grocery">Grocery list</a></li>
+            <li class="login"><a href="/login">Login</a></li>
+        </ul>
+    </div>
+    
     <h1><%= recipe.text1 %></h1>
     <div class="imgContainer">
         <img src="<%= recipe.text3 %>">
