@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/assets/style.css">
+    <script src="https://kit.fontawesome.com/4f32920e14.js" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li class="active"><a href="/home">Home</a></li>
+            <li class="share"><a href="/share">Share your recipes</a></li>
+            <li class="favourite"><a href="/favourite">Favourite recipes <i class="fa-solid fa-star"></i></a></li>
+            <li class="grocery"><a href="/grocery">Grocery list</a></li>
+            <li class="login"><a href="/login">Login</a></li>
+        </ul>
+    </div>
+
+    <div class="welcome">
+        <h1>Welcome</h1>
+        <h4>Text about the site</h4>
+        <i class="fa-solid fa-angle-down"></i>
+    </div>
+
+    <div class="home_main">
+        <h1>Most recent posts:</h1>
+        <li class="posts">
+            <% data.forEach(function (post) { %>
+                <div class="eachpost">
+                    <a href="/recipe/<%= post.id %>">
+                        <h2><%= post.title %></h2>
+                        <% if(post.image != ''){ %>
+                            <img src="<%= post.image %>">
+                        <% } %>
+                    </a>
+                    <form action="/addcart" method="POST">
+                        <input type="hidden" name="title" value="<%= post.title %>">
+                        <input type="hidden" name="ingredients" value="<%= post.ingredients %>">
+                        <button type="submit" title="Add to cart" class="btncart"><i class="fa-solid fa-basket-shopping"></i></button>
+                    </form>
+                    <form action="addfav" method="POST">
+                        <input type="hidden" name="favId" value="<%= post.id %>">
+                        <button type="submit" title="add to favourites"><i class="fa-regular fa-star"></i></button>
+                    </form>
+                </div>
+            <% }) %>
+        </li>
+
+    </div>
+
+</body>
+</html>

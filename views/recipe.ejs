@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= recipe.title %></title>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li class="home"><a href="/home">Home</a></li>
+            <li class="share"><a href="/share">Share your recipes</a></li>
+            <li class="favourite"><a href="/favourite">Favourite recipes <i class="fa-solid fa-star"></i></a></li>
+            <li class="grocery"><a href="/grocery">Grocery list</a></li>
+            <li class="login"><a href="/login">Login</a></li>
+        </ul>
+    </div>
+    
+    <h1><%= recipe.title %></h1>
+    <div class="imgContainer">
+        <img src="<%= recipe.image %>">
+    </div>
+
+    
+    <div>
+        <h4><%=recipe.ingredients%></h4>
+    </div>
+
+
+    <div class="instructionsContainer">
+        <p><%= recipe.instructions %></p>
+    </div>
+</body>
+</html>

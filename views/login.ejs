@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/assets/style.css">
+    <script src="https://kit.fontawesome.com/4f32920e14.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body class="body-login">
+    <div class="navbar">
+        <ul>
+            <li class="home"><a href="/home">Home</a></li>
+            <li class="share"><a href="/share">Share your recipes</a></li>
+            <li class="favourite"><a href="/favourite">Favourite recipes <i class="fa-solid fa-star"></i></a></li>
+            <li class="grocery"><a href="/grocery">Grocery list</a></li>
+            <li class="login"><a href="/login">Login</a></li>
+        </ul>
+    </div>
+
+    <div class="login-main">
+        <form action="/login" method="POST">
+            <h2>Login</h2>
+            <label for="usernameOrEmail">Username/Email</label>
+            <input type="text" name="usernameOrEmail" id="usernameOrEmail" placeholder="NoobMaster69 / name.lastname@gmail.com" required/><br/><br/>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="IronmanSucks123" required/><br/><br/>
+            <button type="submit">Login</button><br/>
+            <% if (loginMsg) { %>
+                <p class="loginMsg"><%= loginMsg %></p>
+            <% } %>
+    
+            <p>Don't have an account? <a href="/register"><strong>Register</strong></a></p>
+        </form>
+    </div>
+</body>
+</html>

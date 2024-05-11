@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/assets/style.css">
+    <script src="https://kit.fontawesome.com/4f32920e14.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body class="body-groc">
+    <div class="navbar">
+        <ul>
+          <li class="home"><a href="/home">Home</a></li>
+          <li class="share"><a href="/share">Share your recipes</a></li>
+          <li class="favourite"><a href="/favourite">Favourite recipes <i class="fa-solid fa-star"></i></a></li>
+          <li class="active"><a href="/grocery">Grocery list</a></li>
+          <li class="login"><a href="/login">Login</a></li>
+        </ul>
+    </div>
+
+    <ul class="groceries">
+      <h2>Grocery list:</h2>
+      <form action="/add" method="post">
+        <label for="item">Add Item:</label>
+        <input type="text" id="item" name="item" required>
+        <button type="submit">Add</button>
+      </form>
+      <form action="/remove" method="post">
+        <label for="item">Remove Item:</label>
+        <select id="item" name="item">
+          <% items.forEach(item => { %>
+            <option value="<%= item %>"><%= item %></option>
+          <% }); %>
+        </select>
+        <button type="submit">Remove</button>
+      </form>
+      <% items.forEach(item => { %>
+        <li class="groc-item"><%= item %></li>
+      <% }); %>
+    </ul>
+      
+      <div class="cartgroc">
+        <h2>This is your cart for added groceries from recipes</h2>
+        <% if (cart && cart.length > 0) { %>
+          <% cart.forEach(cart => { %>
+            <li><strong><%= cart.title %>:</strong> <%= cart.ingredients %></li>
+          <% }); %>
+        <% } else { %>
+          <p>Your cart is empty.</p>
+        <% } %>
+      </div>
+</body>
+</html>
